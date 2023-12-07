@@ -16,3 +16,41 @@ pl.hist3 <- pl.hist + geom_histogram(binwidth = 0.1, aes(fill=..count..))
 
 # Labels
 pl.hist2 + xlab('Rating') + ylab('Count') + ggtitle("Histogram")
+
+#SCATTERPLOT
+
+df <- mtcars
+pl.scatter <- ggplot(df, aes(x=wt, y=mpg))
+
+# geom layer 
+pl.scatter2 <- pl.scatter + geom_point( aes(shape=factor(cyl), color=hp))
+
+pl.scatter3 <- pl.scatter2 + scale_color_gradient(low="blue", high="red")
+
+# BARPLOT
+
+df2 <- mpg
+pl.barplot <- ggplot(df2, aes(x=class))
+pl.barplot2 <- pl.barplot + geom_bar( aes(fill=drv))
+pl.barplot2 <- pl.barplot + geom_bar( aes(fill=drv), position="dodge")
+pl.barplot2 <- pl.barplot + geom_bar( aes(fill=drv), position="fill")
+
+
+# BOX PLOT
+df3 <- mtcars
+
+pl.boxplot <- ggplot(df3,aes(x=factor(cyl), y=mpg))
+print(pl.boxplot + geom_boxplot(aes(fill=factor(cyl))) + theme_bw())
+
+# VARIABLE PLOTTING
+#install.packages("hexbin")
+#library(hexbin)
+pl.varplot <- ggplot(movies, aes(x=year, y=rating))
+pl.varplot2 <- pl.varplot + geom_density2d() + scale_fill_gradient(low="blue", high="red")
+
+# COORDINATES and FACETING
+
+
+
+
+
