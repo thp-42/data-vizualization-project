@@ -49,8 +49,19 @@ pl.varplot <- ggplot(movies, aes(x=year, y=rating))
 pl.varplot2 <- pl.varplot + geom_density2d() + scale_fill_gradient(low="blue", high="red")
 
 # COORDINATES and FACETING
+ggplot(mpg, aes(x=displ,y=hwy)) + geom_point() + coord_cartesian(xlim=c(1, 5), ylim=c(15, 30))
+ggplot(mpg, aes(x=displ,y=hwy)) + geom_point() + coord_fixed(ratio=1/5)
 
+# divide the plot by cyl and drv
+ggplot(mpg, aes(x=displ,y=hwy)) + geom_point() + facet_grid(. ~ cyl)
+ggplot(mpg, aes(x=displ,y=hwy)) + geom_point() + facet_grid(drv ~ cyl)
 
-
+## themes
+#install.packages("ggthemes")
+library(ggthemes)
+ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_dark()
+ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_minimal()
+ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_bw()
+ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_fivethirtyeight()
 
 
